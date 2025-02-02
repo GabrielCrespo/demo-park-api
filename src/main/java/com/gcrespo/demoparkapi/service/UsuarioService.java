@@ -1,7 +1,11 @@
-package com.gcrespo.demo_park_api.service;
+package com.gcrespo.demoparkapi.service;
 
-import com.gcrespo.demo_park_api.entity.Usuario;
-import com.gcrespo.demo_park_api.repository.UsuarioRepository;
+import com.gcrespo.demoparkapi.entity.Usuario;
+import com.gcrespo.demoparkapi.exception.EntityNotFoundException;
+import com.gcrespo.demoparkapi.exception.PasswordInvalidException;
+import com.gcrespo.demoparkapi.exception.UserUniqueViolationException;
+import com.gcrespo.demoparkapi.repository.UsuarioRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,26 +23,30 @@ public class UsuarioService {
 
     @Transactional
     public Usuario salvar(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+        try {
+            return usuarioRepository.save(usuario);
+        } catch (DataIntegrityViolationException e) {
+            throw new UserUniqueViolationException(String.format("Username %s já cadastrado", usuario.getUsername()));
+        }
     }
 
     @Transactional(readOnly = true)
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Usuário id=%d não encontrado", id)));
     }
 
     @Transactional
     public void editarSenha(Long id, String senhaAtual, String novaSenha, String confirmaSenha) {
 
         if (!novaSenha.equals(confirmaSenha)) {
-            throw new RuntimeException("Nova senha não confere com confirmacao");
+            throw new PasswordInvalidException("Nova senha não confere com confirmacao");
         }
 
         Usuario usuario = buscarPorId(id);
 
         if (!usuario.getPassword().equals(senhaAtual)) {
-            throw new RuntimeException("Senha atual não confere!");
+            throw new PasswordInvalidException("Senha atual não confere!");
         }
 
         usuario.setPassword(novaSenha);

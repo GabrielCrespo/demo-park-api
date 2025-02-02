@@ -1,4 +1,4 @@
-package com.gcrespo.demo_park_api.enums;
+package com.gcrespo.demoparkapi.enums;
 
 public enum Role {
     ROLE_ADMIN,

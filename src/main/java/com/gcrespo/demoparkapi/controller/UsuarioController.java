@@ -1,10 +1,10 @@
-package com.gcrespo.demo_park_api.controller;
+package com.gcrespo.demoparkapi.controller;
 
-import com.gcrespo.demo_park_api.dto.UsuarioCreateDto;
-import com.gcrespo.demo_park_api.dto.UsuarioResponseDto;
-import com.gcrespo.demo_park_api.dto.UsuarioSenhaDto;
-import com.gcrespo.demo_park_api.dto.mapper.UsuarioMapper;
-import com.gcrespo.demo_park_api.service.UsuarioService;
+import com.gcrespo.demoparkapi.dto.UsuarioCreateDto;
+import com.gcrespo.demoparkapi.dto.UsuarioResponseDto;
+import com.gcrespo.demoparkapi.dto.UsuarioSenhaDto;
+import com.gcrespo.demoparkapi.dto.mapper.UsuarioMapper;
+import com.gcrespo.demoparkapi.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

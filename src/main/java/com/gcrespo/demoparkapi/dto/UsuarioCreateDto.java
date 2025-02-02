@@ -1,4 +1,4 @@
-package com.gcrespo.demo_park_api.dto;
+package com.gcrespo.demoparkapi.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

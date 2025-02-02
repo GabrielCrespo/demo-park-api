@@ -1,6 +1,6 @@
-package com.gcrespo.demo_park_api.repository;
+package com.gcrespo.demoparkapi.repository;
 
-import com.gcrespo.demo_park_api.entity.Usuario;
+import com.gcrespo.demoparkapi.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {

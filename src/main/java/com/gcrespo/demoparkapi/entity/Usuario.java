@@ -1,6 +1,6 @@
-package com.gcrespo.demo_park_api.entity;
+package com.gcrespo.demoparkapi.entity;
 
-import com.gcrespo.demo_park_api.enums.Role;
+import com.gcrespo.demoparkapi.enums.Role;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;

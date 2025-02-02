@@ -1,4 +1,4 @@
-package com.gcrespo.demo_park_api;
+package com.gcrespo.demoparkapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

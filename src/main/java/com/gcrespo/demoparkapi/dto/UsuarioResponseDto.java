@@ -1,4 +1,4 @@
-package com.gcrespo.demo_park_api.dto;
+package com.gcrespo.demoparkapi.dto;
 
 public class UsuarioResponseDto {
 

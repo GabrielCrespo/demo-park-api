@@ -1,8 +1,8 @@
-package com.gcrespo.demo_park_api.dto.mapper;
+package com.gcrespo.demoparkapi.dto.mapper;
 
-import com.gcrespo.demo_park_api.dto.UsuarioCreateDto;
-import com.gcrespo.demo_park_api.dto.UsuarioResponseDto;
-import com.gcrespo.demo_park_api.entity.Usuario;
+import com.gcrespo.demoparkapi.dto.UsuarioCreateDto;
+import com.gcrespo.demoparkapi.dto.UsuarioResponseDto;
+import com.gcrespo.demoparkapi.entity.Usuario;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 

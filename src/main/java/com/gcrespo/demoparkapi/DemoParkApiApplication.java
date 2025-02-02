@@ -1,4 +1,4 @@
-package com.gcrespo.demo_park_api;
+package com.gcrespo.demoparkapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -17,6 +17,12 @@ public class UsuarioSenhaDto {
     @Size(message = "Confirma senha deve conter tamanho 6", min = 6, max = 6)
     private String confirmaSenha;
 
+    public UsuarioSenhaDto(String senhaAtual, String novaSenha, String confirmaSenha) {
+        this.senhaAtual = senhaAtual;
+        this.novaSenha = novaSenha;
+        this.confirmaSenha = confirmaSenha;
+    }
+
     public String getSenhaAtual() {
         return senhaAtual;
     }

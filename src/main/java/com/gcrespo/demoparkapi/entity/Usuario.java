@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "usuarios")
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
 
@@ -17,7 +17,7 @@ public class Usuario implements Serializable {
     @Column(nullable = false, unique = true, length = 100)
     private String username;
 
-    @Column(nullable = false, length = 6)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false, length = 25)

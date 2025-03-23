@@ -1,5 +1,7 @@
 package com.gcrespo.demoparkapi.config;
 
+import com.gcrespo.demoparkapi.jwt.JwtAuthorizationFilter;
+import com.gcrespo.demoparkapi.jwt.JwtUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableMethodSecurity
@@ -25,10 +28,13 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "api/v1/usuarios")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/usuarios")
                         .permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth").permitAll()
                         .anyRequest()
-                        .authenticated()).build();
+                        .authenticated())
+                .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
     @Bean
@@ -39,6 +45,11 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public JwtAuthorizationFilter jwtAuthorizationFilter() {
+        return new JwtAuthorizationFilter();
     }
 
 }

@@ -18,8 +18,8 @@ public final class JwtUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtUtils.class);
 
-    private static final String JWT_BEARER = "Bearer ";
-    private static final String JWT_AUTHORIZATION = "Authorization";
+    public static final String JWT_BEARER = "Bearer ";
+    public static final String JWT_AUTHORIZATION = "Authorization";
     private static final String SECRET_KEY = "1Y90ZfcWwN2ONPweFMU33hMqHRacycFT";
 
     private static final long EXPIRE_DAYS = 0L;

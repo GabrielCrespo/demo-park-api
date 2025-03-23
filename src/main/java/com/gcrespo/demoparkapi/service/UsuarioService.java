@@ -1,6 +1,7 @@
 package com.gcrespo.demoparkapi.service;
 
 import com.gcrespo.demoparkapi.entity.Usuario;
+import com.gcrespo.demoparkapi.enums.Role;
 import com.gcrespo.demoparkapi.exception.EntityNotFoundException;
 import com.gcrespo.demoparkapi.exception.PasswordInvalidException;
 import com.gcrespo.demoparkapi.exception.UserUniqueViolationException;
@@ -55,5 +56,16 @@ public class UsuarioService {
     @Transactional(readOnly = true)
     public List<Usuario> buscarTodos() {
         return usuarioRepository.findAll();
+    }
+
+    @Transactional
+    public Usuario buscarPorUsername(String username) {
+        return usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Usuário %s não encontrado", username)));
+    }
+
+    @Transactional
+    public Role buscarRolePorUsername(String username) {
+        return usuarioRepository.findRoleByUsername(username);
     }
 }
